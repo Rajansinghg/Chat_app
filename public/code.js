@@ -19,7 +19,7 @@
         if (message.length == 0) {
             return;
         }
-        console.log(uname,message);
+        console.log(uname, message);
         readerMessage("my", {
             username: uname,
             text: message
@@ -33,27 +33,50 @@
         app.querySelector(".chat-screen #message-input").value = "";
     });
 
-    app.querySelector(".chat-screen #exit-chat").addEventListener("click",function(){
-        socket.emit("exituser",uname)
+    document.getElementById("message-input").addEventListener("keypress", function (event) {
+        console.log("Rajan in enter --> ");
+        if (event.key === "Enter") {
+            let message = app.querySelector(".chat-screen #message-input").value;
+            console.log(message);
+            if (message.length == 0) {
+                return;
+            }
+            console.log(uname, message);
+            readerMessage("my", {
+                username: uname,
+                text: message
+            });
+
+            socket.emit("chat", {
+                username: uname,
+                text: message
+            });
+
+            app.querySelector(".chat-screen #message-input").value = "";
+        }
+    });
+
+    app.querySelector(".chat-screen #exit-chat").addEventListener("click", function () {
+        socket.emit("exituser", uname)
         window.location.href = window.location.href;
     });
 
-    socket.on("update",function(update){
+    socket.on("update", function (update) {
         console.log("Socket update --> ")
-        readerMessage("update",update);
+        readerMessage("update", update);
     });
 
-    socket.on("chat",function(message){
+    socket.on("chat", function (message) {
         console.log("Socket chat --> ")
-        readerMessage("other",message);
+        readerMessage("other", message);
     });
-    
+
     function readerMessage(type, message) {
         let messageContainer = app.querySelector(".chat-screen .messages");
         console
         if (type == "my") {
             let el = document.createElement("div");
-            console.log("El my--> ",el);
+            console.log("El my--> ", el);
             el.setAttribute("class", "message my-message");
             el.innerHTML = `
             <div>
@@ -64,7 +87,7 @@
         }
         else if (type == "other") {
             let el = document.createElement("div");
-            console.log("El other--> ",el);
+            console.log("El other--> ", el);
             el.setAttribute("class", "message other-message");
             el.innerHTML = `
             <div>
@@ -74,7 +97,7 @@
             messageContainer.appendChild(el);
         } else if (type == "update") {
             let el = document.createElement("div");
-            console.log("El update--> ",el);
+            console.log("El update--> ", el);
             el.setAttribute("class", "update");
             el.innerText = message;
             messageContainer.appendChild(el);
