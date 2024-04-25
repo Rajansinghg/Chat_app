@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    
     <div class="app">
         <div class="screen join-screen active">
             <div class="form">
@@ -24,17 +25,32 @@
             </div>
         </div>
         <div class="screen chat-screen ">
-            <div class="header">
-                <div class="logo">Chatroom</div>
-                <button id="exit-chat">Exit</button>
+            <!-- added by rajan nw  -->
+            <div class ="GCContainer">
+                <button id="groupchat">GroupChat</button>
             </div>
-            <div class="messages">
+            <div class="live-user">
+                <div class="liveText">Active Users</div>
+                <div class="OnlineUserContainer" id="test2">
+                    <!-- <div class="message right"> hi i am rajan </div>
+                        <div class="message left"> hii i am other </div> -->
+                    </div>
+                </div>
+                <!-- end  -->
+                
+                <div class="header">
+                    <div class="logo" id="logo1">GroupChat</div>
+                    <button id="exit-chat">Exit</button>
+                </div>
+            <div class="messages" id="messages1">
+                
                 
             </div>
             <div class="typebox">
                 <input type="text" id="message-input">
                 <button id="send-message">Send</button>
             </div>
+
         </div>
     </div>
     <script type="text/javascript" src="socket.io/socket.io.js"></script>

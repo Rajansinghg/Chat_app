@@ -28,7 +28,7 @@ body {
 .app>.screen.active {
     display: block;
     width: 100%;
-    height: 100%;
+    height: 95%;
 }
 
 .screen .form {
@@ -62,7 +62,7 @@ body {
 .screen .form-input input {
     width: 100%;
     padding: 10px;
-    border: 1px solid #555;
+    border: 2px solid #555;
     font-size: 16px;
 }
 
@@ -105,9 +105,12 @@ body {
 
 .chat-screen .messages {
     width: 100%;
-    height: calc(100% - 100px);
+    /* height: calc(100% - 100px); */
+    height: calc(100% - 200px);
     background: #f5f5f5;
     overflow: auto;
+    border: 1px solid #080808;
+    min-height: 125px;
 }
 
 .chat-screen .messages .message {
@@ -136,28 +139,29 @@ body {
     margin-bottom: 5px;
 }
 
-.chat-screen .messages .message .text{
+.chat-screen .messages .message .text {
     word-wrap: break-word;
 }
 
-.chat-screen .messages .update{
+.chat-screen .messages .update {
     text-align: center;
     padding: 10px;
     font-style: italic;
 }
 
 .chat-screen .typebox {
-    width:100%;
+    width: 100%;
     height: 50px;
-    display:flex;
-}
-.chat-screen .typebox input{
-    flex:1;
-    height: 50px;
-    font-size:18px;
+    display: flex;
 }
 
-.chat-screen .typebox button{
+.chat-screen .typebox input {
+    flex: 1;
+    height: 50px;
+    font-size: 18px;
+}
+
+.chat-screen .typebox button {
     width: 80px;
     height: 100%;
     background: #111;
@@ -166,4 +170,62 @@ body {
     outline: none;
     border: none;
     cursor: pointer;
+}
+
+.live-user {
+    /* width: 20%; */
+    min-height: 84px;
+    width: 80%;
+    height: 12.8%;
+    background-color: #65585857;
+    border: 2px solid #080808;
+    margin-bottom: 2px;
+    overflow: auto;
+    /* height: 100%; */
+    /* border-radius: 10px; */
+}
+
+.live-user ul li {
+    /* margin-bottom: 10px; */
+    cursor: pointer;
+    transition: all .4s linear;
+    margin-left: 25px;
+}
+
+.live-user ul li:hover {
+    color: blue;
+}
+
+.liveText {
+    text-align: left;
+    background-color: #111;
+    color: rgb(255, 255, 255);
+    padding-bottom: 0;
+    padding-left: 15px;
+
+}
+
+ul {
+    border: 0.75px solid #daccb1;
+    box-sizing: content-box;
+}
+
+.GCContainer {
+    min-height: 84px;
+    width: 20%;
+    height: 12.8%;
+    background-color: #111;
+    float: right;
+}
+
+#groupchat {
+    margin: 10%;
+    margin-top: 22px;
+    padding: 15px 8px;
+    border: 1px solid #eee;
+    background: transparent;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
 }
